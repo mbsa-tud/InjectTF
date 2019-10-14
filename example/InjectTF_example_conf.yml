@@ -1,0 +1,17 @@
+# This is a sample YAML file for fault injection configuration
+
+# Deterministic fault seed for the injections
+# Seed: 1000
+
+# Type of fault to be injected for Scalars and Tensors
+# Allowed values are: None, Rand, Zero, BitFlip
+
+ScalarFaultType: BitFlip
+TensorFaultType: BitFlip
+
+# List of operations and their injection probabilities.
+# All implemented operations can be found in
+# InjectedFunctions.py
+
+Ops:
+  Add: 0.5  # 50% probability of fault injection

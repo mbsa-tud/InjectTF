@@ -133,7 +133,7 @@ def get_graph_statistics(graph):
 
     # gather all const values in the graph
     const_vars = []
-    for node in g.get_operations():
+    for node in graph.get_operations():
         if node.type == "Const":
             const_vars.append(node)
 

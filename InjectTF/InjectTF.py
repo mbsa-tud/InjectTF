@@ -179,26 +179,12 @@ class InjectTF:
     def get_original_collections(self):
         """Returns the collections of the original graph."""
 
-        # TODO Test fix. Are the provided mappings saved correctly when freezing the graph?
         res = {}
-        #       res['inputs'] = [
-        #           self.__original_graph.get_tensor_by_name(
-        #               self.__original_mappings['inputs'][0] + ":0"
-        #           ),
-        #           self.__original_graph.get_tensor_by_name(
-        #               self.__original_mappings['inputs'][2] + ":0"
-        #           )
-        #       ]
-
-        #       res['outputs'] = [
-        #           self.__original_graph.get_tensor_by_name(
-        #               self.__original_mappings['outputs'][0] + ":0"
-        #           )
-        #       ]
-
-        for key in self.__original_graph.get_all_collection_keys():
-            print(key)
-            res[key] = self.__original_graph.get_collection(key)
+        for key in self.__original_mappings:
+            res[key] = [
+                self.__original_graph.get_tensor_by_name(name + ":0")
+                for name in self.__original_mappings[key]
+            ]
 
         return res
 
